@@ -10,6 +10,8 @@ import {
 import UserAvatar from "./UserAvatar";
 
 const UserButton = () => {
+  // ... Session ...
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
