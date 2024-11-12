@@ -6,6 +6,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "../../../auth";
 import { MessagesSquareIcon } from "lucide-react";
 import Link from "next/link";
+import CreateChatButton from "./CreateChatButton";
 
 const Header = async () => {
   // Check if user is authenticated
@@ -28,6 +29,7 @@ const Header = async () => {
               <Link href={"/chat"} prefetch={false}>
                 <MessagesSquareIcon className="text-black dark:text-white" />
               </Link>
+              <CreateChatButton />
             </>
           ) : (
             <Link href={"/pricing"}>Pricing</Link>
