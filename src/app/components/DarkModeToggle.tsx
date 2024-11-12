@@ -1,16 +1,27 @@
 "use client";
 
-import * as React from "react";
+import { useEffect, useState } from "react";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import { Button } from "../../components/ui/button";
 
 export function DarkModeToggle() {
   const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  // Ensure the component only renders on the client
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const toggleTheme = () => {
     setTheme(theme === "light" ? "dark" : "light");
   };
+
+  // Prevent rendering on the server (during SSR) to avoid hydration mismatch
+  if (!mounted) {
+    return null;
+  }
 
   return (
     <Button variant="outline" size="icon" onClick={toggleTheme}>
