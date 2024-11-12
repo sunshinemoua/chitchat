@@ -45,7 +45,7 @@ export default function Home() {
                   href="/pricing"
                   className="text-smm font-semibold loading-6 text-gray-900 dark:text-gray-300"
                 >
-                  View Pricing <span aria-hidden="true">&rarr</span>
+                  View Pricing <span aria-hidden="true">&rarr;</span>
                 </Link>
               </div>
             </div>
