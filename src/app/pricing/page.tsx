@@ -3,8 +3,8 @@ import PricingCards from "../components/PricingCards";
 
 const PricingPage = () => {
   return (
-    <div className="isolate overflow-hidden dark:bg-gray-900">
-      <div className="mx-auto max-w-7xl px-6 pb-96 pt-24 text-center sm:pt-32 lg:px-8">
+    <div className="isolate h-full pb-72 overflow-hidden dark:bg-gray-900">
+      <div className="mx-auto max-w-7xl px-6 pb-12 pt-16 text-white text-center lg:px-8">
         <div className="mx-auto max-w-4xl">
           <h2 className="text-base font-semibold leading-7 text-indigo-400">
             Pricing
@@ -27,7 +27,7 @@ const PricingPage = () => {
               cx={604}
               cy={512}
               fill="url(#radial-gradient-pricing)"
-              rx={684}
+              rx={604}
               ry={512}
             />
             <defs>
@@ -40,11 +40,7 @@ const PricingPage = () => {
         </div>
       </div>
 
-      <div className="flow-root bg-white pb-24 sm:pb-32">
-        <div className="-mt-80">
-          <PricingCards redirect={true} />
-        </div>
-      </div>
+      <PricingCards redirect={true} />
     </div>
   );
 };
