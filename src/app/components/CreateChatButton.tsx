@@ -2,7 +2,6 @@
 import { Button } from "@/components/ui/button";
 import React from "react";
 import { MessageSquarePlusIcon } from "lucide-react";
-import { useRouter } from "next/router";
 
 const CreateChatButton = () => {
   //   const router = useRouter();
