@@ -23,7 +23,7 @@ const tiers = [
     name: "Pro",
     id: "pro_tier",
     href: "#",
-    priceMonthly: "$5.99",
+    priceMonthly: "$1.99",
     description: "Unlock the Full Potential with Pro!",
     features: [
       "Unlimited Messages in Chats",
