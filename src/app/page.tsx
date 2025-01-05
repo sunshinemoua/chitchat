@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import logoSVG from "../app/images/logos/logo.svg";
+import LogoImage from "../app/images/logos/logo.svg";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../../auth";
 
@@ -61,7 +61,7 @@ export default async function Home() {
               <div className="--2 ounded-xl bg-gray-900/5 p-2 ring-1 ring-gray-900/10 lg:rounded-2xl lg:p-4">
                 <Image
                   unoptimized
-                  src={logoSVG}
+                  src={LogoImage}
                   alt="App screenshot"
                   width={2432}
                   height={1442}
