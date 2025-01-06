@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { useToast } from "@/hooks/use-toast";
 import { v4 as uuidv4 } from "uuid";
-import { userSubscriptionStore } from "../../../store/store";
+// import { userSubscriptionStore } from "../../../store/store";
 import LoadingSpinner from "./LoadingSpinner";
 import { serverTimestamp, setDoc } from "firebase/firestore";
 import { addChatRef } from "@/lib/converters/ChatMembers";
@@ -17,7 +17,7 @@ const CreateChatButton = ({ isLarge }: { isLarge?: boolean }) => {
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
 
-  const subscription = userSubscriptionStore((state) => state.subscription);
+  // const subscription = userSubscriptionStore((state) => state.subscription);
 
   const createNewChat = async () => {
     if (!session?.user.id) return;
@@ -61,6 +61,7 @@ const CreateChatButton = ({ isLarge }: { isLarge?: boolean }) => {
         toast({
           title: "Error",
           description: "There was an error creating your chat",
+          duration: 3000,
           variant: "destructive",
         });
       })
