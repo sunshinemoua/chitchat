@@ -8,6 +8,6 @@ interface SubscriptionState {
 
 // Zustand store for managing subscription state with setter func
 export const userSubscriptionStore = create<SubscriptionState>((set) => ({
-  subscription: null,
+  subscription: undefined,
   setSubscription: (subscription: Subscription | null) => set({ subscription }),
 }));

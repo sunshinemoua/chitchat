@@ -7,6 +7,7 @@ import { authOptions } from "../../../auth";
 import { MessagesSquareIcon } from "lucide-react";
 import Link from "next/link";
 import CreateChatButton from "./CreateChatButton";
+import UpgradeBanner from "./UpgradeBanner";
 
 const Header = async () => {
   // Check if user is authenticated
@@ -44,6 +45,7 @@ const Header = async () => {
       </nav>
 
       {/* Upgrade Banner */}
+      <UpgradeBanner />
     </div>
   );
 };

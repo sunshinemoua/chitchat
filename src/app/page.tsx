@@ -1,13 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import LogoImage from "../app/images/logos/logo.svg";
-import { getServerSession } from "next-auth";
-import { authOptions } from "../../auth";
 
 export default async function Home() {
-  const session = await getServerSession(authOptions);
-  console.log(session);
-
   return (
     <div>
       <div className="relative isolate pt-14 dark:bg-gray-900">
