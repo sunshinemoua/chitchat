@@ -99,7 +99,7 @@ const PricingCards = ({ redirect }: { redirect: boolean }) => {
                 <Link href="/register">Get Started Today</Link>
               </Button>
             ) : (
-              tier.id && <CheckoutButton />
+              tier.id === "pro_tier" && <CheckoutButton />
             )}
           </div>
         ))}
