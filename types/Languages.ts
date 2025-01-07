@@ -1,3 +1,12 @@
+export const BasicLanguagesSupported = [
+  "en",
+  "zh-CN",
+  "zh-TW",
+  "hi",
+  "es",
+  "fr",
+];
+
 export type LanguagesSupported =
   | "ab"
   | "ace"

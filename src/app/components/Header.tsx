@@ -8,6 +8,7 @@ import { MessagesSquareIcon } from "lucide-react";
 import Link from "next/link";
 import CreateChatButton from "./CreateChatButton";
 import UpgradeBanner from "./UpgradeBanner";
+import LanguageSelect from "./LanguageSelect";
 
 const Header = async () => {
   // Check if user is authenticated
@@ -19,10 +20,7 @@ const Header = async () => {
         <Logo />
 
         <div className="flex-1 flex items-center justify-end space-x-4">
-          {/* Language Selection */}
-
-          {/* Session &&  (
-            ...) */}
+          <LanguageSelect />
 
           {/* If user is authenticated, render messages icon. If not, render pricing button */}
           {session ? (
@@ -36,15 +34,12 @@ const Header = async () => {
             <Link href={"/pricing"}>Pricing</Link>
           )}
 
-          {/* Dark Mode Toggle */}
           <DarkModeToggle />
 
-          {/* User Button */}
           <UserButton session={session} />
         </div>
       </nav>
 
-      {/* Upgrade Banner */}
       <UpgradeBanner />
     </div>
   );
