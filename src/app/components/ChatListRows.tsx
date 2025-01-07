@@ -21,8 +21,6 @@ const Row = ({ chatId }: { chatId: string }) => {
     lastMessageRef(chatId)
   );
 
-  console.log('in here', messages);
-
   const prettyUUID = (n = 4) => {
     return chatId.substring(0, n);
   };
@@ -57,7 +55,7 @@ const Row = ({ chatId }: { chatId: string }) => {
           <p className="mb-auto">
             {" "}
             {message
-              ? new Date(message.timestamp).toLocaleTimeString()
+              ? new Date(message?.timestamp)?.toLocaleTimeString()
               : "No messages yet"}
           </p>
           <p>chat #{prettyUUID()}</p>
@@ -78,7 +76,7 @@ const Row = ({ chatId }: { chatId: string }) => {
         </div>
       )}
 
-      {(messages?.length === 0 || !messages) && !loading && row()}
+      {messages?.length === 0 && !loading && row()}
       {messages?.map((message) => row(message))}
     </div>
   );
@@ -86,9 +84,7 @@ const Row = ({ chatId }: { chatId: string }) => {
 
 const ChatListRows = ({ initialChats }: { initialChats: ChatMembers[] }) => {
   const { data: session } = useSession();
-  console.log("client", initialChats);
 
-  console.log("chat list rows", session);
   // useCollectionData extracts list of query snapshot docs
   const [members, loading, error] = useCollectionData<ChatMembers>(
     // If session exists, then retrieve data from firestore query (ref)
@@ -98,7 +94,6 @@ const ChatListRows = ({ initialChats }: { initialChats: ChatMembers[] }) => {
     }
   );
 
-  console.log("CHAT LIST ROWS members", members);
   if (members?.length === 0)
     return (
       <div className="flex flex-col justify-center items-center pt-40 space-y-2">
