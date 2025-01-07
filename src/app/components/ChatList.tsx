@@ -8,11 +8,9 @@ import ChatListRows from "./ChatListRows";
 const ChatList = async () => {
   const session = await getServerSession(authOptions);
 
-  if (!session) return;
-
   // Return all chats that the user is a member of
   const chatsSnapshot = await getDocs(
-    chatMembersCollectionGroupRef(session?.user.id)
+    chatMembersCollectionGroupRef(session?.user.id!)
   );
 
   const initialChats = chatsSnapshot.docs.map((doc) => ({

@@ -13,6 +13,7 @@ import { lastMessageRef, Message } from "@/lib/converters/Message";
 import { Skeleton } from "@/components/ui/skeleton";
 import UserAvatar from "./UserAvatar";
 import { useRouter } from "next/navigation";
+import { useLanguageStore } from "../../../store/store";
 
 const Row = ({ chatId }: { chatId: string }) => {
   const router = useRouter();
@@ -21,9 +22,7 @@ const Row = ({ chatId }: { chatId: string }) => {
     lastMessageRef(chatId)
   );
 
-  const prettyUUID = (n = 4) => {
-    return chatId.substring(0, n);
-  };
+  const language = useLanguageStore((state) => state.language);
 
   const row = (message?: Message) => {
     return (
@@ -47,7 +46,8 @@ const Row = ({ chatId }: { chatId: string }) => {
           </p>
 
           <p className="text-gray-400 line-clamp-1">
-            {message?.translated?.["en"] || "Get the conversation started.."}
+            {message?.translated?.[language] ||
+              "Get the conversation started.."}
           </p>
         </div>
 
@@ -58,7 +58,8 @@ const Row = ({ chatId }: { chatId: string }) => {
               ? new Date(message?.timestamp)?.toLocaleTimeString()
               : "No messages yet"}
           </p>
-          <p>chat #{prettyUUID()}</p>
+          {/* Return first 4 characters of chat ID */}
+          <p>chat #{chatId.substring(0, 4)}</p>
         </div>
       </div>
     );
