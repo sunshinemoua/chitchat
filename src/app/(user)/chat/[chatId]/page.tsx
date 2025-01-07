@@ -4,6 +4,7 @@ import ChatInput from "@/app/components/ChatInput";
 import ChatMessages from "@/app/components/ChatMessages";
 import { getDocs } from "firebase/firestore";
 import { sortedMessagesRef } from "@/lib/converters/Message";
+import ChatMembersBadges from "@/app/components/ChatMembersBadges";
 
 // Extract chatId from URL
 interface Props {
@@ -23,6 +24,8 @@ const ChatRoom = async ({ params }: Props) => {
 
   return (
     <>
+      <ChatMembersBadges chatId={chatId} />
+
       <div className="flex-1">
         <ChatMessages
           chatId={chatId}
