@@ -80,4 +80,4 @@ export const sortedMessagesRef = (chatId: string) =>
 
 // Reference to last message sent or received
 export const lastMessageRef = (chatId: string) =>
-  query(query(messagesRef(chatId), limit(1)), orderBy("timestamp", "asc"));
+  query(query(messagesRef(chatId), limit(1)), orderBy("timestamp", "desc"));
