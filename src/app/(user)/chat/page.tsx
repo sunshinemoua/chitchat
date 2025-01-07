@@ -1,4 +1,4 @@
-import ChatList from "@/app/components/ChatList";
+import ChatDataLayer from "@/app/components/ChatDataLayer";
 import React from "react";
 
 type Props = {
@@ -12,7 +12,7 @@ const ChatsOverviewPage = async ({ searchParams }: Props) => {
   //   const { error } = await searchParams;
   return (
     <div>
-      <ChatList />
+      <ChatDataLayer />
     </div>
   );
 };
