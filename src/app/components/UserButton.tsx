@@ -58,7 +58,9 @@ const UserButton = ({ session }: { session: Session | null }) => {
           )}
           <DropdownMenuSeparator />
 
-          <DropdownMenuItem onClick={() => signOut()}>
+          <DropdownMenuItem
+            onClick={() => signOut({ callbackUrl: "/", redirect: true })}
+          >
             Sign Out
           </DropdownMenuItem>
         </DropdownMenuContent>
