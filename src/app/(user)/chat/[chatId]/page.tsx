@@ -9,9 +9,7 @@ import AdminControls from "@/app/components/AdminControls";
 
 // Extract chatId from URL
 interface Props {
-  params: {
-    chatId: string;
-  };
+  params: Promise<{ chatId: string }>;
 }
 
 const ChatRoom = async ({ params }: Props) => {
