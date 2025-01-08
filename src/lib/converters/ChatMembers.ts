@@ -67,7 +67,7 @@ export const chatMembersRef = (chatId: string) =>
   collection(db, "chats", chatId, "members").withConverter(
     chatMembersConverter
   );
-
+// Check all members in specific chat and return the admin user
 export const chatMemberAdminRef = (chatId: string) =>
   query(
     collection(db, "chats", chatId, "members"),
