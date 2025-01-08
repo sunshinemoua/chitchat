@@ -58,7 +58,7 @@ const ChatInput = ({ chatId }: { chatId: string }) => {
       toast({
         title: "Free plan limit exceeded",
         description:
-          "You've exceeded the FREE plam limit of 25 messages per chat. Upgrade to PRO for unlimited chat messages!",
+          "You've exceeded the limit of 25 messages per chat. Upgrade to PRO for unlimited chat messages!",
         variant: "destructive",
         action: (
           <ToastAction
