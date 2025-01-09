@@ -8,8 +8,13 @@ import { useToast } from "@/hooks/use-toast";
 import { v4 as uuidv4 } from "uuid";
 // import { userSubscriptionStore } from "../../../store/store";
 import LoadingSpinner from "./LoadingSpinner";
-import { serverTimestamp, setDoc } from "firebase/firestore";
-import { addChatRef } from "@/lib/converters/ChatMembers";
+import { getDocs, serverTimestamp, setDoc } from "firebase/firestore";
+import {
+  addChatRef,
+  chatMembersCollectionGroupRef,
+} from "@/lib/converters/ChatMembers";
+import { userSubscriptionStore } from "../../../store/store";
+import { ToastAction } from "@/components/ui/toast";
 
 const CreateChatButton = ({ isLarge }: { isLarge?: boolean }) => {
   const router = useRouter();
@@ -17,12 +22,41 @@ const CreateChatButton = ({ isLarge }: { isLarge?: boolean }) => {
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
 
-  // const subscription = userSubscriptionStore((state) => state.subscription);
+  const subscription = userSubscriptionStore((state) => state.subscription);
+  const isPro =
+    subscription?.role === "pro" && subscription?.status === "active";
 
   const createNewChat = async () => {
     if (!session?.user.id) return;
 
     setLoading(true);
+    const chatId = uuidv4();
+
+    const chatsSnapshot = await getDocs(
+      chatMembersCollectionGroupRef(session?.user.id!)
+    );
+    const chatCount = chatsSnapshot.docs.map((doc) => doc.data()).length;
+    console.log(chatCount);
+
+    // If not pro, limit chat rooms to 3
+    if (!isPro && chatCount >= 3) {
+      toast({
+        title: "Free plan limit exceeded",
+        description:
+          "You've exceeded the limit of 3 chat rooms. Delete chat rooms or upgrade to PRO for unlimited chats!",
+        variant: "destructive",
+        action: (
+          <ToastAction
+            altText="Upgrade"
+            onClick={() => router.push("/register")}
+          >
+            {" "}
+            Upgrade to PRO{" "}
+          </ToastAction>
+        ),
+      });
+      return;
+    }
 
     // Alert user
     toast({
@@ -30,10 +64,6 @@ const CreateChatButton = ({ isLarge }: { isLarge?: boolean }) => {
       description: "Hold tight while we create your new chat!",
       duration: 3000,
     });
-
-    const chatId = uuidv4();
-
-    console.log(session, chatId);
 
     // Send data to firestore to create new chat
     await setDoc(addChatRef(chatId, session.user.id), {
