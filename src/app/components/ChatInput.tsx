@@ -22,6 +22,7 @@ import { userSubscriptionStore } from "../../../store/store";
 import { useToast } from "@/hooks/use-toast";
 import { ToastAction } from "@radix-ui/react-toast";
 import { useRouter } from "next/navigation";
+import { Textarea } from "@/components/ui/textarea";
 
 const formSchema = z.object({
   input: z.string().max(1000),
@@ -90,12 +91,13 @@ const ChatInput = ({ chatId }: { chatId: string }) => {
   };
 
   return (
-    <div className="sticky bottom-0">
+    <div className="sticky bottom-0 pt-4 pb-16 bg-white dark:bg-gray-900">
       {/* Create form with Shadcn component */}
       <Form {...form}>
         <form
+          autoComplete="off"
           onSubmit={form.handleSubmit(onSubmit)}
-          className="flex space-x-2 p-2 rounded-t-xl max-w-4xl mx-auto bg-white border dark:bg-slate-800 hover:border-1"
+          className="flex items-end space-x-2 p-2 rounded-xl max-w-4xl mx-auto bg-white border dark:bg-slate-800 hover:border-1"
         >
           <FormField
             control={form.control} // Connects component to RHF form context--manages form state
@@ -104,8 +106,8 @@ const ChatInput = ({ chatId }: { chatId: string }) => {
             render={({ field }) => (
               <FormItem className="flex-1">
                 <FormControl>
-                  <Input
-                    className="border-none bg-transparent dark:placeholder:text-white/70"
+                  <Textarea
+                    className="border-none bg-transparent dark:placeholder:text-white/70 focus-visible:ring-transparent focus-visible:ring-offset-transparent resize-none "
                     placeholder="Enter your message in ANY language..."
                     {...field}
                   />
