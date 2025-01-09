@@ -13,6 +13,7 @@ import LanguageSelect from "./LanguageSelect";
 const Header = async () => {
   // Check if user is authenticated
   const session = await getServerSession(authOptions);
+  console.log(session?.user);
 
   return (
     <div className="sticky top-0 z-50 bg-white dark:bg-gray-900">
