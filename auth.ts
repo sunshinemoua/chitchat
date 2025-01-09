@@ -10,6 +10,7 @@ export const authOptions: NextAuthOptions = {
       clientSecret: process.env.GOOGLE_CLIENT_SECRET! as string,
     }),
   ],
+  secret: process.env.NEXTAUTH_SECRET! as string,
   debug: true,
   // Persist id and session credentials to db
   callbacks: {
