@@ -8,8 +8,8 @@ import SubscriptionProvider from "./components/SubscriptionProvider";
 import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
-  title: "Chitter Chatter",
-  description: "Chat with anyone, in any language",
+  title: "ChitChat",
+  description: "Chat in any language!",
 };
 
 export default function RootLayout({

@@ -7,7 +7,7 @@ import Image from "next/image";
 const Logo = () => {
   return (
     <Link href="/" prefetch={false} className="overflow-hidden">
-      <div className="flex items-center h-16 w-16">
+      <div className="flex items-center w-48">
         <AspectRatio
           ratio={16 / 9}
           className="flex items-center justify-center"
@@ -20,7 +20,6 @@ const Logo = () => {
           />
         </AspectRatio>
       </div>
-      Go Home
     </Link>
   );
 };
