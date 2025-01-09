@@ -18,7 +18,7 @@ const ChatMessages = ({ chatId, session, initialMessages }: Props) => {
   const { language } = useLanguageStore();
 
   // Listener to scroll to end of chat when new message is received
-  const messagesEndRef = useRef<HTMLDivElement>();
+  const messagesEndRef = useRef<HTMLDivElement>(null);
 
   // Fetch current messages
   const [messages, loading, error] = useCollectionData<Message>(
@@ -34,7 +34,7 @@ const ChatMessages = ({ chatId, session, initialMessages }: Props) => {
   }, [messages, messagesEndRef]);
 
   return (
-    <div className="p-5">
+    <div className="p-5 pb-10">
       {/* Render welcome message if no messages or loading */}
       {!loading && messages?.length === 0 && (
         <div className="flex flex-col justify-center items-center text-center p-20 rounded-xl space-y-2 bg-indigo-400 text-white font-extralight">
@@ -86,6 +86,7 @@ const ChatMessages = ({ chatId, session, initialMessages }: Props) => {
               image={message.user.image}
               className={`${!isSender && "-order-1"}`}
             />
+            <div ref={messagesEndRef} />
           </div>
         );
       })}
