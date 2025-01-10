@@ -91,16 +91,17 @@ const PricingCards = ({ redirect }: { redirect: boolean }) => {
               </ul>
             </div>
 
-            {redirect ? (
-              <Button
-                asChild
-                className="mt-8 bg-indigo-600 text-white hover:bg-indigo-500"
-              >
-                <Link href="/register">Get Started Today</Link>
-              </Button>
-            ) : (
-              tier.id === "pro_tier" && <CheckoutButton />
-            )}
+            {tier.id === "pro_tier" &&
+              (redirect ? (
+                <Button
+                  asChild
+                  className="mt-8 bg-indigo-600 text-white hover:bg-indigo-500"
+                >
+                  <Link href="/register">Get Started Today</Link>
+                </Button>
+              ) : (
+                <CheckoutButton />
+              ))}
           </div>
         ))}
       </div>
