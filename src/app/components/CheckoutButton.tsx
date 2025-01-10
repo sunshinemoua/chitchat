@@ -7,17 +7,26 @@ import LoadingSpinner from "./LoadingSpinner";
 import { userSubscriptionStore } from "../../../store/store";
 import ManageAccountButton from "./ManageAccountButton";
 import { Button } from "@/components/ui/button";
+import { useToast } from "@/hooks/use-toast";
 
 const CheckoutButton = () => {
   const { data: session } = useSession();
+  const { toast } = useToast();
   const [loading, setLoading] = useState(false);
   const subscription = userSubscriptionStore((state) => state.subscription);
   const isSubscribed =
     subscription?.status === "active" && subscription?.role === "pro";
 
   const createCheckoutSession = async () => {
-    if (!session?.user.id) return;
-
+    if (!session) {
+      toast({
+        title: "You are currently not logged in",
+        description: "Please log in to sign up for Pro!",
+        duration: 3000,
+        variant: "destructive",
+      });
+      return;
+    }
     // Push a document into firestore db
     setLoading(true);
 
